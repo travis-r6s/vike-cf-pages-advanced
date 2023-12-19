@@ -1,15 +1,20 @@
-import React from 'react'
+import type { FC, PropsWithChildren } from 'react'
+import { StrictMode } from 'react'
 import type { PageContext } from 'vike/types'
-import logo from './logo.svg'
+import { PageContextProvider } from '../hooks/usePageContext'
 import { Link } from './Link'
-import { PageContextProvider } from './usePageContext'
+import logo from '@/renderer/logo.svg'
 
 import './PageShell.scss'
 import '@thumbtack/thumbprint-global-css'
 
-export function PageShell({ children, pageContext }: { children: React.ReactNode, pageContext: PageContext }) {
+interface Props {
+  pageContext: PageContext
+}
+
+export const PageShell: FC<PropsWithChildren<Props>> = ({ children, pageContext }) => {
   return (
-    <React.StrictMode>
+    <StrictMode>
       <PageContextProvider pageContext={pageContext}>
         <Layout>
           <Sidebar>
@@ -24,7 +29,7 @@ export function PageShell({ children, pageContext }: { children: React.ReactNode
           <Content>{children}</Content>
         </Layout>
       </PageContextProvider>
-    </React.StrictMode>
+    </StrictMode>
   )
 }
 

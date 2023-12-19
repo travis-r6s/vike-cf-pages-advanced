@@ -2,6 +2,10 @@ import type { OnRenderHtmlAsync } from 'vike/types'
 import { escapeInject } from 'vike/server'
 import logoUrl from './logo.svg'
 
+// TODO: Update these details
+
+// TODO: Add document head support
+
 export const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   // See https://vike.dev/head
   const { documentProps } = pageContext.exports

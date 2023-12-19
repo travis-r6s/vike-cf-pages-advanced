@@ -67,6 +67,8 @@ const DataComponent: FC = () => {
   )
 }
 
+// TODO: Update this to use more CRUD - not sure what, maybe creating a post?
+
 export function Page() {
   return (
     <QueryClientProvider client={queryClient}>

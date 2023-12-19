@@ -58,6 +58,8 @@ const DataComponent: FC = () => {
   )
 }
 
+// TODO: I want a bit more full-featured tech here, so thinking a CRUD, maybe for the TODO's?
+
 export function Page() {
   return (
     <Provider value={client}>

@@ -4,6 +4,8 @@ interface PageProps {
   data: { title: string }[]
 }
 
+// TODO: This is pretty simple, so i'm thinking data to prefill a select/auto-complete?
+
 export function Page() {
   const context = usePageContext<PageProps>()
 
