@@ -14,6 +14,7 @@ const excludedPaths = [
 
 export const onRequest: Function = async (context) => {
   const url = new URL(context.request.url)
+  console.log('[Middleware] Handling', url.pathname)
 
   try {
     if (excludedPaths.some(path => url.pathname.startsWith(path))) { return context.next() }
@@ -21,6 +22,8 @@ export const onRequest: Function = async (context) => {
     if (context.env.ENVIRONMENT === 'development') {
       return context.next()
     }
+
+    console.log('[Middleware](Renderer) Handling', url.pathname)
 
     // We only want to run this in production - in development, these requests get forwarded to the Vite dev server.
     const { renderPage } = await import('vike/server')
