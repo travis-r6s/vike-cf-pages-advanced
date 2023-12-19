@@ -28,30 +28,35 @@ const DataComponent: FC = () => {
   return (
     <div>
       <h2>Some posts for you to read:</h2>
-      <p>Status: {status}</p>
-      <small>Not changing? The API is just too dang fast. Check your network console...</small>
+      <p>
+        Status:
+        {' '}
+        {status}
+      </p>
+      <small>Status not changing? The API is just too dang fast. Check your network console...</small>
       <br />
-      <br />
-      {!!data && (
-        <button onClick={handleRefresh}>
-          Looking for something else?
-        </button>
-      )}
       {isLoading && (
         <p>Loading...</p>
       )}
       {isError && error instanceof Error && (
         <p>{error.message}</p>
       )}
-      <br />
       {!!data && (
-        <ul>
-          {data.map((post, i) => (
-            <li key={i}>
-              {post.title}
-            </li>
-          ))}
-        </ul>
+        <>
+          <br />
+          <button onClick={handleRefresh}>
+            Looking for something else?
+          </button>
+          <br />
+
+          <ul>
+            {data.map((post, i) => (
+              <li key={i}>
+                {post.title}
+              </li>
+            ))}
+          </ul>
+        </>
       )}
       <br />
       {!!data?.length && (
