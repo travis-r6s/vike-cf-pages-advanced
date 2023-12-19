@@ -3,6 +3,31 @@
 import type { Root } from 'react-dom/client'
 import { createRoot } from 'react-dom/client'
 import type { OnRenderClientAsync } from 'vike/types'
+import * as Sentry from '@sentry/react'
+
+Sentry.init({
+  dsn: import.meta.env.VITE_SENTRY_DSN,
+  integrations: [
+    new Sentry.BrowserTracing({}),
+    new Sentry.Replay()
+  ],
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  tracesSampleRate: 0.2,
+
+  // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
+  tracePropagationTargets: ['localhost', /^https:\/\/yourserver\.io\/api/],
+
+  // Capture Replay for 10% of all sessions,
+  // plus for 100% of sessions with an error
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
+})
+
+function ErrorFallbackComponent() {
+  return <div>An error has occurred</div>
+}
 
 // As we are only using the SPA rendering mode, we create the root once on initial load, then re-use it when the route changes
 let root: Root
@@ -23,8 +48,10 @@ export const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnTy
   }
 
   root.render(
-    <PageShell pageContext={pageContext}>
-      <Page {...pageProps} />
-    </PageShell>,
+    <Sentry.ErrorBoundary fallback={ErrorFallbackComponent} showDialog>
+      <PageShell pageContext={pageContext}>
+        <Page {...pageProps} />
+      </PageShell>
+    </Sentry.ErrorBoundary>,
   )
 }

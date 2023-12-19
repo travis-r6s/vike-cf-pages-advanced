@@ -6,6 +6,8 @@ import logoUrl from './logo.svg'
 
 // TODO: Add document head support
 
+// If you are doing SSR, you could also add Sentry here, to capture any unhandled exceptions in any of the render hooks.
+
 export const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   // See https://vike.dev/head
   const { documentProps } = pageContext.exports
