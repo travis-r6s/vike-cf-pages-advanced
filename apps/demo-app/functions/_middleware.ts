@@ -33,6 +33,7 @@ export const renderMiddleware: Function = async (context) => {
       return context.next()
     }
 
+    // We only want to use the Vike renderer in production - in development, these requests get forwarded to the Vite dev server.
     if (context.env.ENVIRONMENT === 'development') {
       return context.next()
     }
@@ -43,7 +44,6 @@ export const renderMiddleware: Function = async (context) => {
       level: 'info',
     })
 
-    // We only want to run this in production - in development, these requests get forwarded to the Vite dev server.
     const { renderPage } = await import('vike/server')
     const { httpResponse } = await renderPage({ urlOriginal: context.request.url })
 
