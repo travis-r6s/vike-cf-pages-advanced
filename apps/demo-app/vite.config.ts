@@ -7,7 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 const config: UserConfig = {
   resolve: {
     alias: {
-      '@': path.resolve('.'),
+      '#': path.resolve('.'),
     },
   },
   plugins: [

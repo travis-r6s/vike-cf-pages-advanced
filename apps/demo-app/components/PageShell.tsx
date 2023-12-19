@@ -1,9 +1,7 @@
 import type { FC, PropsWithChildren } from 'react'
 import { StrictMode } from 'react'
 import type { PageContext } from 'vike/types'
-import { PageContextProvider } from '../hooks/usePageContext'
-import { Link } from './Link'
-import logo from '@/renderer/logo.svg'
+import logo from '#/renderer/logo.svg'
 
 import './PageShell.scss'
 import '@thumbtack/thumbprint-global-css'

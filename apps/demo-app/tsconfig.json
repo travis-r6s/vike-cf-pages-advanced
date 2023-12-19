@@ -6,7 +6,7 @@
     "module": "ES2022",
     "moduleResolution": "Bundler",
     "paths": {
-      "@/*": ["./*"]
+      "#/*": ["./*"]
     },
     "types": ["vite/client", "@cloudflare/workers-types"],
     "strict": true,

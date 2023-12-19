@@ -1,5 +1,3 @@
-import { usePageContext } from '../hooks/usePageContext'
-
 // We can do direct CSS imports, if we don't need a seperate SCSS file
 import '@thumbtack/thumbprint-scss/link.css'
 
