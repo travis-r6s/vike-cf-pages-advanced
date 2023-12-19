@@ -6,6 +6,7 @@
 export {}
 declare global {
   const +configH: typeof import('./renderer/+config')['default']
+  const Button: typeof import('./components/Button')['Button']
   const Link: typeof import('./renderer/Link')['Link']
   const PageContextProvider: typeof import('./renderer/usePageContext')['PageContextProvider']
   const PageShell: typeof import('./renderer/PageShell')['PageShell']

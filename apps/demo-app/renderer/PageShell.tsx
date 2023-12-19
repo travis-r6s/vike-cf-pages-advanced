@@ -5,6 +5,7 @@ import { Link } from './Link'
 import { PageContextProvider } from './usePageContext'
 
 import './PageShell.scss'
+import '@thumbtack/thumbprint-global-css'
 
 export function PageShell({ children, pageContext }: { children: React.ReactNode, pageContext: PageContext }) {
   return (

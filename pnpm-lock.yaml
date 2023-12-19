@@ -26,6 +26,12 @@ importers:
 
   apps/demo-app:
     dependencies:
+      '@thumbtack/thumbprint-global-css':
+        specifier: ^0.1.21
+        version: 0.1.21
+      '@thumbtack/thumbprint-scss':
+        specifier: ^4.0.3
+        version: 4.0.3
       '@trpc/client':
         specifier: ^10.44.1
         version: 10.44.1(@trpc/server@10.44.1)
@@ -1258,6 +1264,14 @@ packages:
       - supports-color
       - typescript
     dev: true
+
+  /@thumbtack/thumbprint-global-css@0.1.21:
+    resolution: {integrity: sha512-rmMLPWvOAi6BOCgRjHUpx4waVBEmPQBPNOsFpxXhsaJVNpu3dhdx0IcavQklTB4Pupj/ZJkS+NaA3A9kLCW60g==}
+    dev: false
+
+  /@thumbtack/thumbprint-scss@4.0.3:
+    resolution: {integrity: sha512-TjrqA83h0dZzXIoV1/mXWv2TH3KPvUL3/+re9ajfWlHb+VDXEY1mhKT74kpXAmf0ZOeLKVobECj8GWHDSK4rxA==}
+    dev: false
 
   /@trpc/client@10.44.1(@trpc/server@10.44.1):
     resolution: {integrity: sha512-vTWsykNcgz1LnwePVl2fKZnhvzP9N3GaaLYPkfGINo314ZOS0OBqe9x0ytB2LLUnRVTAAZ2WoONzARd8nHiqrA==}

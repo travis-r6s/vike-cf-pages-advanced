@@ -4,12 +4,12 @@ import type { UserConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 
 const config: UserConfig = {
-  
+
   plugins: [
     React(),
     Vike(),
     AutoImport({
-      dirs: ['./renderer'],
+      dirs: ['./renderer', './components'],
       imports: [
         'react',
       ],
