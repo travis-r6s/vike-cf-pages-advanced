@@ -2,3 +2,4 @@ node_modules/
 dist/
 .wrangler
 .env*
+!.env.*.example
