@@ -1,7 +1,10 @@
 {
   "type": "module",
   "scripts": {
+    "dev:vite":"vite",
+    "dev:pages": "wrangler pages dev --proxy 3000",
     "dev": "wrangler pages dev -- vite",
+    "server": "wrangler pages dev dist/client",
     "build": "vite build"
   },
   "dependencies": {

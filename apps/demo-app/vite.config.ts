@@ -5,6 +5,9 @@ import type { UserConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 
 const config: UserConfig = {
+  server: {
+    port: 3000
+  },
   resolve: {
     alias: {
       '#': path.resolve('.'),
