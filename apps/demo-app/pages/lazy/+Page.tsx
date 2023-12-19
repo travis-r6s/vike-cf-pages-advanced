@@ -2,6 +2,9 @@ function Loading() {
   return <small>Loading a frankly ludicrous amount of code...</small>
 }
 
+// TODO: Add documentation to say look at network request.
+// TODO: Add option to load a component on button click
+
 export function Page() {
   return (
     <div>
