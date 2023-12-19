@@ -7,7 +7,7 @@ export const sentryMiddleware: Function = (context) => {
     debug: context.env.ENVIRONMENT === 'development',
     enabled: context.env.ENVIRONMENT !== 'development',
     enableTracing: true,
-    tracesSampleRate: 0.2,
+    tracesSampleRate: 1,
     environment: context.env.ENVIRONMENT,
   })(context)
 }
