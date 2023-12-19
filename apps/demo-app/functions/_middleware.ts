@@ -20,6 +20,13 @@ const excludedPaths = [
 
 // TODO: Check if this is the best way to handle Vike in dev?
 
+/**
+ * This is likely best handled in a `_worker.js` file, instead of using
+ * a middleware function - however, I couldn't get the worker CLI to use
+ * the `_worker.ts` file in dev, and I like using the platforms conventions
+ * for the functions layout/routing. If we override using a `_worker.ts` file,
+ * we would need to duplicate this ourselves with a custom router, and a folder structure.
+ */
 export const renderMiddleware: Function = async (context) => {
   const url = new URL(context.request.url)
 
