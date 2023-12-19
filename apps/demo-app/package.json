@@ -5,6 +5,8 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@trpc/client": "^10.44.1",
+    "@trpc/server": "^10.44.1",
     "graphql": "^16.8.1",
     "graphql-yoga": "^5.0.2",
     "react": "^18.2.0",
@@ -13,7 +15,7 @@
     "urql": "^4.0.6"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231121.0",
+    "@cloudflare/workers-types": "^4.20231218.0",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",

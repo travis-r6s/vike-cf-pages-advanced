@@ -26,6 +26,12 @@ importers:
 
   apps/demo-app:
     dependencies:
+      '@trpc/client':
+        specifier: ^10.44.1
+        version: 10.44.1(@trpc/server@10.44.1)
+      '@trpc/server':
+        specifier: ^10.44.1
+        version: 10.44.1
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -46,8 +52,8 @@ importers:
         version: 4.0.6(graphql@16.8.1)(react@18.2.0)
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: ^4.20231121.0
-        version: 4.20231121.0
+        specifier: ^4.20231218.0
+        version: 4.20231218.0
       '@types/node':
         specifier: ^20.10.5
         version: 20.10.5
@@ -437,8 +443,8 @@ packages:
       '@brillout/import': 0.2.3
     dev: true
 
-  /@cloudflare/workers-types@4.20231121.0:
-    resolution: {integrity: sha512-+kWfpCkqiepwAKXyHoE0gnkPgkLhz0/9HOBIGhHRsUvUKvhUtm3mbqqoGRWgF1qcjzrDUBbrrOq4MYHfFtc2RA==}
+  /@cloudflare/workers-types@4.20231218.0:
+    resolution: {integrity: sha512-Vs1FKjfUjXYGbCsXzkl+ITp0Iyb6QiW6+vTERTNThC+v96T0IvPVAioH4tT20rXwoxAfxh380mAaxYtTrJUNVg==}
     dev: true
 
   /@envelop/core@5.0.0:
@@ -1252,6 +1258,19 @@ packages:
       - supports-color
       - typescript
     dev: true
+
+  /@trpc/client@10.44.1(@trpc/server@10.44.1):
+    resolution: {integrity: sha512-vTWsykNcgz1LnwePVl2fKZnhvzP9N3GaaLYPkfGINo314ZOS0OBqe9x0ytB2LLUnRVTAAZ2WoONzARd8nHiqrA==}
+    peerDependencies:
+      '@trpc/server': 10.44.1
+    dependencies:
+      '@trpc/server': 10.44.1
+    dev: false
+
+  /@trpc/server@10.44.1:
+    resolution: {integrity: sha512-mF7B+K6LjuboX8I1RZgKE5GA/fJhsJ8tKGK2UBt3Bwik7hepEPb4NJgNr7vO6BK5IYwPdBLRLTctRw6XZx0sRg==}
+    engines: {node: '>=18.0.0'}
+    dev: false
 
   /@types/babel__core@7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
