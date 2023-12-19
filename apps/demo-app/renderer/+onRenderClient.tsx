@@ -9,7 +9,7 @@ Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({}),
-    new Sentry.Replay()
+    new Sentry.Replay(),
   ],
 
   // Set tracesSampleRate to 1.0 to capture 100%
@@ -23,6 +23,14 @@ Sentry.init({
   // plus for 100% of sessions with an error
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
+  beforeSend: (event) => {
+    // Optionally show a crash reporter dialog on an error
+    if (event.exception) {
+      Sentry.showReportDialog({ eventId: event.event_id })
+    }
+
+    return event
+  },
 })
 
 function ErrorFallbackComponent() {
@@ -47,6 +55,7 @@ export const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnTy
     root = createRoot(rootEl)
   }
 
+  // Want to track specific components with Sentry? https://docs.sentry.io/platforms/javascript/guides/react/features/component-tracking/
   root.render(
     <Sentry.ErrorBoundary fallback={ErrorFallbackComponent} showDialog>
       <PageShell pageContext={pageContext}>
