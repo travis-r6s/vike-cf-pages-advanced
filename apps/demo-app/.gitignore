@@ -3,3 +3,4 @@ dist/
 .wrangler
 .env*
 !.env.*.example
+.*.vars
