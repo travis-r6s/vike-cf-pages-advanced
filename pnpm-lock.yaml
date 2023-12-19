@@ -26,12 +26,6 @@ importers:
 
   apps/demo-app:
     dependencies:
-      '@faker-js/faker':
-        specifier: ^8.3.1
-        version: 8.3.1
-      '@replygirl/tc':
-        specifier: ^4.0.2
-        version: 4.0.2
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -871,11 +865,6 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@faker-js/faker@8.3.1:
-    resolution: {integrity: sha512-FdgpFxY6V6rLZE9mmIBb9hM0xpfvQOSNOLnzolzKwsE1DH+gC7lEKV1p1IbR0lAYyvYd5a4u3qWJzowUkw1bIw==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
-    dev: false
-
   /@humanwhocodes/config-array@0.11.13:
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}
     engines: {node: '>=10.10.0'}
@@ -950,11 +939,6 @@ packages:
   /@polka/url@1.0.0-next.23:
     resolution: {integrity: sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==}
     dev: true
-
-  /@replygirl/tc@4.0.2:
-    resolution: {integrity: sha512-dq3Z3P41LlJpdsQAVtL4dlRa+V6UfU1oyGTJ51mvC32Ay+CuYmkOfM5OwKUJg85yOmMKVtthxsm4qEEJjFC8eQ==}
-    engines: {node: '>=12.x'}
-    dev: false
 
   /@rollup/pluginutils@5.1.0:
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}

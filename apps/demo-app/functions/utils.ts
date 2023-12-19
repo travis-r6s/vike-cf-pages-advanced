@@ -2,6 +2,7 @@
 
 export interface Env {
   KV: KVNamespace
+  ENVIRONMENT?: 'development' | 'production'
 }
 
 export type Function = PagesFunction<Env>

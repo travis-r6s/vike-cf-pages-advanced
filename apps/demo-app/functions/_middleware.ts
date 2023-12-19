@@ -1,4 +1,3 @@
-import { renderPage } from 'vike/server'
 import type { Function } from './utils'
 
 /** If you have other functions that are NOT under the /api folder, add them here so they aren't handled by Vike. */
@@ -7,14 +6,25 @@ const excludedPaths = [
   '/assets',
 ]
 
+// TODO: Check if this is the best way to handle Vike in dev?
+
 export const onRequest: Function = async (context) => {
   const url = new URL(context.request.url)
+
   try {
     if (excludedPaths.some(path => url.pathname.startsWith(path))) { return context.next() }
 
+    if (context.env.ENVIRONMENT === 'development') {
+      return context.next()
+    }
+
+    // We only want to run this in production - in development, these requests get forwarded to the Vite dev server.
+    const { renderPage } = await import('vike/server')
     const { httpResponse } = await renderPage({ urlOriginal: context.request.url })
 
-    if (!httpResponse) { return context.next() }
+    if (!httpResponse) {
+      return context.next()
+    }
 
     return new Response(httpResponse.body, {
       status: httpResponse.statusCode,

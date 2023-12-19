@@ -1,0 +1,5 @@
+name = "vike-cf-pages"
+vars = { ENVIRONMENT = "development" }
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
