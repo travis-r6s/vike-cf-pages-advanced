@@ -8,6 +8,10 @@ const excludedPaths = [
 
 // TODO: Check if this is the best way to handle Vike in dev?
 
+// TODO: Chain middleware to capture errors with Sentry
+// Thinking we can do tracing? And capture any errors directly, unless otherwise handled
+// https://developers.cloudflare.com/pages/functions/plugins/sentry/
+
 export const onRequest: Function = async (context) => {
   const url = new URL(context.request.url)
 
