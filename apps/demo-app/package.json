@@ -5,6 +5,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@cloudflare/pages-plugin-sentry": "^1.1.1",
     "@thumbtack/thumbprint-global-css": "^0.1.21",
     "@thumbtack/thumbprint-scss": "^4.0.3",
     "@trpc/client": "^10.44.1",

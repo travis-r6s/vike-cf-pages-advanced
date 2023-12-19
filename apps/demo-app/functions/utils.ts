@@ -1,13 +1,21 @@
 /** As we don't export an onRequest handler here, Pages won't add this as a function route. */
 
-export interface Env {
+// We can import PluginData from our cloudflare plugin, but it actually currently exports the wrong type :(
+import type { Toucan } from 'toucan-js'
+
+interface Env {
   KV: KVNamespace
   ENVIRONMENT?: 'development' | 'production'
+  SENTRY_DSN: string
 }
 
-export type Function = PagesFunction<Env>
+interface Data extends Record<string, unknown> {
+  sentry: Toucan
+}
 
-export function createResponse(context: EventContext<Env, any, Record<string, unknown>>) {
+export type Function = PagesFunction<Env, any, Data>
+
+export function createResponse(context: EventContext<Env, any, Data>) {
   const respond = (status: number, body?: unknown, headers: Record<string, string> = {}): Response => {
     if (!body) { return new Response(null, { status, headers }) }
 
