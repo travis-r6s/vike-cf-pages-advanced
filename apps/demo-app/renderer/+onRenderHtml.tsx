@@ -2,8 +2,6 @@ import type { OnRenderHtmlAsync } from 'vike/types'
 import { escapeInject } from 'vike/server'
 import logoUrl from './logo.svg'
 
-// TODO: Update these details
-
 // TODO: Add document head support
 
 // If you are doing SSR, you could also add Sentry here, to capture any unhandled exceptions in any of the render hooks.
@@ -11,8 +9,8 @@ import logoUrl from './logo.svg'
 export const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   // See https://vike.dev/head
   const { documentProps } = pageContext.exports
-  const title = (documentProps && documentProps.title) || 'Vite SSR app'
-  const desc = (documentProps && documentProps.description) || 'App using Vite + Vike'
+  const title = (documentProps && documentProps.title) || 'Vike + Cloudflare Pages'
+  const desc = (documentProps && documentProps.description) || 'App using Vite + Vike + Cloudflare Pages'
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
