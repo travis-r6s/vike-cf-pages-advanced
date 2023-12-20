@@ -12,6 +12,13 @@ body {
   font-family: var(--font-family) !important;
 }
 
+code {
+  font-family: monospace;
+  background-color: #eaeaea;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
 .layout {
   max-width: 1200px;
   margin: 2rem auto;
@@ -27,6 +34,6 @@ body {
   }
 
   .content {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
   }
 }

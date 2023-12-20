@@ -7,7 +7,7 @@ import type { OnBeforeRenderAsync } from 'vike/types'
 export const onBeforeRender: OnBeforeRenderAsync = async () => {
   console.log('Running onBeforeRender on the server!')
 
-  const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+  const response = await fetch('https://restcountries.com/v3.1/all')
 
   return {
     pageContext: {
