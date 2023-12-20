@@ -42,7 +42,7 @@ function ErrorFallbackComponent() {
   return (
     <div style={{ margin: '2rem' }}>
       <p className="tp-title-2">An error has occurred!</p>
-      <p className='tp-body-1'>Rest assured, we have been notified, and are working on the issue.</p>
+      <p className="tp-body-1">Rest assured, we have been notified, and are working on the issue.</p>
     </div>
   )
 }

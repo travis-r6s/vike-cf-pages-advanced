@@ -13,10 +13,6 @@ interface PageProps {
   }[]
 }
 
-// TODO: This is pretty simple, so i'm thinking data to prefill a select/auto-complete? Explain it's useful for data needed on the client, like next getServerSideProps
-// ONly used to pass data down, with one less rquest client side, and can access private API's/proxy etc.
-// https://github.com/DannMolina/country-list-json
-
 export function Page() {
   // We pass in the PageProps type here, which updates our context to add the correct types.
   const context = usePageContext<PageProps>()
@@ -43,7 +39,10 @@ export function Page() {
         </a>
         .
         {' '}
-        If you are familiar with Next, this is the same as <code>getServerSideProps</code>. As this is run server-side, you can fetch data
+        If you are familiar with Next, this is the same as
+        {' '}
+        <code>getServerSideProps</code>
+        . As this is run server-side, you can fetch data
         {' '}
         directly from a database, or query an authenticated API directly as the function will never be run on the client and therefore no secrets will be exposed.
         It is useful for fetching data that will be immediately used in the page, without the client needing to run and wait for an API request to fetch this data.
@@ -59,10 +58,25 @@ export function Page() {
       <br />
       {context.pageProps && (
         <form>
-          <label className="tp-label" htmlFor="country-select">Select a country</label>
-          <select id="country-select"className="tp-select">
+          <label
+            className="tp-label"
+            htmlFor="country-select"
+          >
+            Select a country
+
+          </label>
+          <select
+            id="country-select"
+            className="tp-select"
+          >
             {countries.map((country, i) => (
-              <option key={i} value={country.name.common}>{country.name.common}</option>
+              <option
+                key={i}
+                value={country.name.common}
+              >
+                {country.name.common}
+
+              </option>
             ))}
           </select>
         </form>
