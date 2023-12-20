@@ -3,7 +3,7 @@
 // We can import PluginData from our cloudflare plugin, but it actually currently exports the wrong type :(
 import type { Toucan } from 'toucan-js'
 
-interface Env {
+export interface Env {
   KV: KVNamespace
   ENVIRONMENT?: 'development' | 'production'
   SENTRY_DSN: string

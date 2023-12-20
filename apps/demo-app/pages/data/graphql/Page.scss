@@ -1,0 +1,20 @@
+.page {
+  .name-form {
+    max-width: 360px;
+  }
+
+  .todo-list {
+    .todo-items {
+      display: flex;
+      flex-direction: column;
+
+      .todo {
+        &.todo-completed {
+          label {
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+  }
+}

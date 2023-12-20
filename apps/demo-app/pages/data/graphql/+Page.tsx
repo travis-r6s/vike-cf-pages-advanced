@@ -1,5 +1,11 @@
-import type { FC, FormEvent } from 'react'
-import { Client, Provider, fetchExchange, useQuery } from 'urql'
+import { Client, Provider, fetchExchange } from 'urql'
+import { SimpleExample } from './SimpleExample'
+
+import './Page.scss'
+import '@thumbtack/thumbprint-scss/input-row.css'
+import '@thumbtack/thumbprint-scss/input.css'
+import '@thumbtack/thumbprint-scss/button.css'
+import { AdvancedExample } from './AdvancedExample'
 
 /**
  * If you are using GraphQL, you'll want to create the client and add the provider in a parent wrapper component,
@@ -10,63 +16,40 @@ const client = new Client({
   exchanges: [fetchExchange],
 })
 
-const DataComponent: FC = () => {
-  const [name, setName] = useState<string>()
-  const [variables, setVariables] = useState<{ name?: string | undefined }>({})
-
-  const [{ fetching, data, error }] = useQuery({
-    // Please also use graphql-code-generator for your queries!
-    query: `query Hello ($name: String) { hello (name: $name) }`,
-    /**
-     * If you want, you can update this to pass the name variable directly (so variables: { name }),
-     * which will run a GraphQL request each keystroke. Super impractical in real-life, but impressive to see how fast it is.
-     */
-    variables,
-  })
-
-  const handleNameUpdate = useCallback((event: FormEvent<HTMLInputElement>) => setName(event.currentTarget.value), [name])
-  const handleSubmit = useCallback((e: FormEvent) => {
-    e.preventDefault()
-
-    setVariables({ name })
-  }, [name])
-
-  return (
-    <div>
-      <h2>Friendly message:</h2>
-      {fetching && (
-        <p>Loading...</p>
-      )}
-      {!!error && (
-        <p>{error.message}</p>
-      )}
-      {!!data && (
-        <>
-          <p>{data.hello}</p>
-          <br />
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="">
-              <input type="text" placeholder="Your name" value={name} onInput={handleNameUpdate} />
-            </label>
-            <button type="submit">
-              Submit
-            </button>
-          </form>
-        </>
-      )}
-    </div>
-  )
-}
-
 // TODO: I want a bit more full-featured tech here, so thinking a CRUD, maybe for the TODO's?
 
 export function Page() {
   return (
     <Provider value={client}>
-      <h1>Data: GraphQL</h1>
-      <p>An example of fetching data clientside from a GraphQL API, which is in turn hosted on the same worker rendering this page.</p>
-      <br />
-      <DataComponent />
+      <div className="page">
+        <PageHeader title="GraphQL" />
+        <p className="tp-body-1">An example of fetching data clientside from a GraphQL API, which is in turn hosted on the same worker rendering this page.</p>
+        <p className="tp-body-1">
+          This is a pretty atypical GraphQL setup -
+          {' '}
+          <a href="https://the-guild.dev/graphql/yoga-server" target="_blank">GraphQL Yoga</a>
+          {' '}
+          is used in the Cloudflare Pages Function, and
+          {' '}
+          <a href="https://formidable.com/open-source/urql/" target="_blank">URQL</a>
+          {' '}
+          is used clientside.
+          <a href="https://pothos-graphql.dev" target="_blank">Pothos</a>
+          {' '}
+          (an
+          {' '}
+          <em>excellent tool</em>
+          ) is used to create the GraphQL Schema, but this could be replaced with any other similar tool. You could also use the
+          {' '}
+          <a href="https://the-guild.dev/graphql/codegen" target="_blank">GraphQL Code Generator</a>
+          {' '}
+          to create automatic clientside types for your schema.
+        </p>
+        <br />
+        <SimpleExample />
+        <br />
+        <AdvancedExample />
+      </div>
     </Provider>
   )
 }

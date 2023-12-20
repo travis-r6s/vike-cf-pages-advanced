@@ -25,6 +25,9 @@ const config: UserConfig = {
       dirs: ['./hooks', './components'],
       imports: [
         'react',
+        {
+          'urql': ['useQuery', 'useMutation']
+        }
       ],
     }),
   ],
