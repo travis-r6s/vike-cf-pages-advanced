@@ -8,12 +8,10 @@ export const sentryMiddleware: Function = async (context) => {
   const sentry = new Toucan({
     context,
     dsn: context.env.SENTRY_DSN,
-    tracesSampleRate: 1.0,
-    enabled: true,
-    debug: true,
-    enableTracing: true,
+    enabled: context.env.ENVIRONMENT !== 'development',
+    debug: context.env.ENVIRONMENT === 'development',
     environment: context.env.ENVIRONMENT,
-
+    tracesSampleRate: 1.0,
   })
 
   context.data.sentry = sentry
