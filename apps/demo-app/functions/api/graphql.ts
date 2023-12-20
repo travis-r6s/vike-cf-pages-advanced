@@ -3,6 +3,9 @@ import type { Function } from '../utils'
 
 const yoga = createYoga({
   graphqlEndpoint: '/api/graphql',
+  graphiql: {
+    defaultQuery: `query Hello {\n  hello(name: "explorer")\n}`,
+  },
   schema: createSchema({
     typeDefs: /* GraphQL */ `
       type Query {
