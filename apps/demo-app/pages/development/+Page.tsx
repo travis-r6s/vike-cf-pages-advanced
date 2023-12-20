@@ -25,20 +25,20 @@ export function Page() {
         {' '}
         file) to check the current environment with
         {' '}
-        <code>import.meta.env</code>
+        <a href="https://vitejs.dev/guide/env-and-mode" target="_blank"><code>import.meta.env</code></a>
         , and forces a redirect if in production. As Vite + Vike automatically chunk all pages, and the guards run serverside, this page should never load in production.
       </p>
       <br />
       <h2 className="tp-title-3">Example</h2>
       <p className="tp-body-1">Some internal tool to add fake data to your local environment.</p>
       <br />
-      <form>
+      <div>
         <label htmlFor="upload" className="tp-label">Select a CSV file to import</label>
         <div className="tp-input-row tp-input-row--button-stretch">
           <input id="upload" type="file" className="tp-text-input" placeholder="Select a CSV file" />
-          <button className="tp-button">Get Started</button>
+          <button className="tp-button" type="button">Import Data</button>
         </div>
-      </form>
+      </div>
     </div>
   )
 }
