@@ -6,6 +6,7 @@ interface MenuLink {
   text: string
   /** Enforce relative paths, as we are using clientside routing. */
   route: `/${string}`
+  disabled?: boolean
 }
 
 interface MenuHeader {
@@ -95,6 +96,7 @@ const menuItems: MenuItem[] = [
     type: 'link',
     text: 'Dev-only Page',
     route: '/development',
+    disabled: import.meta.env.PROD,
   },
   {
     type: 'link',
@@ -129,7 +131,11 @@ export const Sidebar: FC = () => {
           }
 
           return (
-            <a key={i} href={item.route} className="sidebar-menu-link tp-link">
+            <a
+              key={i}
+              href={item.disabled ? '#' : item.route}
+              className={`sidebar-menu-link tp-link ${item.disabled ? 'tp-link--secondary' : ''}`}
+            >
               {item.text}
             </a>
           )

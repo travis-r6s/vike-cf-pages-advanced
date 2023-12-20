@@ -38,11 +38,10 @@ export function Page() {
         To check this is working, open your browser dev tools, go to the network tab, filter by
         {' '}
         <strong>JS</strong>
-        , and reload the page. You should see a file name
+        , and reload the page. You should see a chunk that is loaded just after the file name
         {' '}
-        <code>HeavyComponent.tsx</code>
-        {' '}
-        that is loaded later than the rest.
+        <code>pages_lazy.*.js</code>
+        . If you try loading another page, you should also see that this chunk is only loaded for this page.
       </p>
       <br />
       <ClientOnly
