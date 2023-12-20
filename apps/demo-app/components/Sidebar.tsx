@@ -36,6 +36,11 @@ const menuItems: MenuItem[] = [
     route: '/about',
   },
   {
+    type: 'link',
+    text: 'Styling',
+    route: '/styling',
+  },
+  {
     type: 'seperator',
   },
   {
