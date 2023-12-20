@@ -69,6 +69,6 @@
 
   // Set file associations
   "files.associations": {
-    ".*.vars": "dotenv"
+    ".*.vars*": "dotenv"
   }
 }
