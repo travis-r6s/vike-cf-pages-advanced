@@ -59,7 +59,7 @@ export function Page() {
       <br />
       {context.pageProps && (
         <form>
-          <label className="tp-label" htmlFor="country-select">Select a state</label>
+          <label className="tp-label" htmlFor="country-select">Select a country</label>
           <select id="country-select"className="tp-select">
             {countries.map((country, i) => (
               <option key={i} value={country.name.common}>{country.name.common}</option>
