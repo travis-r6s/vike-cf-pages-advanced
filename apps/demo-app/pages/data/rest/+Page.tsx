@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 
 /**
  * You'll likely want to create the client and add the provider in a parent wrapper component,
@@ -15,12 +15,15 @@ interface Post {
 }
 
 const DataComponent: FC = () => {
-  const { data, error, isLoading, isError, refetch, status } = useQuery('posts', async (): Promise<Post[]> => {
-    const response = await fetch(`/api/posts`)
-    if (!response.ok) {
-      throw new Error('Network response was not ok :(')
-    }
-    return response.json()
+  const { data, error, isLoading, isError, refetch, status } = useQuery({
+    queryKey: ['posts'],
+    queryFn: async (): Promise<Post[]> => {
+      const response = await fetch(`/api/posts`)
+      if (!response.ok) {
+        throw new Error('Network response was not ok :(')
+      }
+      return response.json()
+    },
   })
 
   const handleRefresh = useCallback(() => refetch(), [])

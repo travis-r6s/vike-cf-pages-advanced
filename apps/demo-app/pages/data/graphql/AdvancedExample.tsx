@@ -32,7 +32,6 @@ export const AdvancedExample: FC = () => {
     }
   `)
 
-  const isFetching = useMemo(() => query.fetching || completeMutation.fetching, [query, completeMutation])
   const error = useMemo(() => query.error || completeMutation.error, [query, completeMutation])
 
   const [completed, setCompleted] = useState<Record<string, boolean>>({})

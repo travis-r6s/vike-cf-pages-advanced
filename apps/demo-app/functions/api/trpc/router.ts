@@ -1,4 +1,6 @@
 import { initTRPC } from '@trpc/server'
+import { ofetch } from 'ofetch'
+import { defaulted, number, object } from 'superstruct'
 
 /**
  * Initialization of tRPC backend
@@ -13,22 +15,33 @@ const t = initTRPC.create()
 export const router = t.router
 export const publicProcedure = t.procedure
 
-interface User {
+interface Product {
   id: number
-  name: string
-  username: string
-  email: string
+  title: string
+  description: string
+  price: string
+  thumbnail: string
+}
+
+interface APIProductResponse {
+  products: Product[]
 }
 
 export const appRouter = router({
-  userList: publicProcedure
-    .query(async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users')
+  productList: publicProcedure
+    .input(object({ page: defaulted(number(), 1) }))
+    .query(async ({ input }) => {
+      const requestUrl = new URL('https://dummyjson.com/products')
 
-      if (!response.ok) { throw new Error('Failed to fetch users from API') }
+      const limit = 10
+      const skip = (input.page - 1) * limit
 
-      const users: User[] = await response.json()
-      return users
+      requestUrl.searchParams.set('limit', limit.toString())
+      requestUrl.searchParams.set('skip', skip.toString())
+
+      const { products } = await ofetch<APIProductResponse>(requestUrl.toString())
+
+      return products
     }),
 })
 

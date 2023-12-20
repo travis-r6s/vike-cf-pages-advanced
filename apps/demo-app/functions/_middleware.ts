@@ -19,6 +19,9 @@ export const sentryMiddleware: Function = async (context) => {
   // TODO: Fix this tracing issue - probably best to handle manually?
   // const transaction = sentry.startTransaction({ name: 'Middleware Tracing' })
 
+  // TODO: Check other examples to see how to get the client for this transaction, then add it to CTX, so we can name spans later, and use
+  // that specific client?
+
   try {
     // TODO: We may want to capture errors in our renderer instead, as it is the final middleware?
     return await context.next()
