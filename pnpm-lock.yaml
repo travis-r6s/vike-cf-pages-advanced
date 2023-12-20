@@ -26,12 +26,12 @@ importers:
 
   apps/demo-app:
     dependencies:
-      '@cloudflare/pages-plugin-sentry':
-        specifier: ^1.1.1
-        version: 1.1.1
       '@sentry/react':
         specifier: ^7.89.0
         version: 7.89.0(react@18.2.0)
+      '@sentry/tracing':
+        specifier: ^7.89.0
+        version: 7.89.0
       '@thumbtack/thumbprint-global-css':
         specifier: ^0.1.21
         version: 0.1.21
@@ -59,6 +59,9 @@ importers:
       react-query:
         specifier: ^3.39.3
         version: 3.39.3(react-dom@18.2.0)(react@18.2.0)
+      toucan-js:
+        specifier: ^3.3.1
+        version: 3.3.1
       urql:
         specifier: ^4.0.6
         version: 4.0.6(graphql@16.8.1)(react@18.2.0)
@@ -457,12 +460,6 @@ packages:
     dependencies:
       '@brillout/import': 0.2.3
     dev: true
-
-  /@cloudflare/pages-plugin-sentry@1.1.1:
-    resolution: {integrity: sha512-GrqUSBNuJIA4JdlJmG+T+PpednuLcijxFUF0nd+m+B2OY0ZOlz1KKMxurN80dXmxYyq5jzM8LW5EiE1WNOPg5w==}
-    dependencies:
-      toucan-js: 3.3.1
-    dev: false
 
   /@cloudflare/workers-types@4.20231218.0:
     resolution: {integrity: sha512-Vs1FKjfUjXYGbCsXzkl+ITp0Iyb6QiW6+vTERTNThC+v96T0IvPVAioH4tT20rXwoxAfxh380mAaxYtTrJUNVg==}
@@ -1291,6 +1288,13 @@ packages:
       '@sentry/core': 7.89.0
       '@sentry/types': 7.89.0
       '@sentry/utils': 7.89.0
+    dev: false
+
+  /@sentry/tracing@7.89.0:
+    resolution: {integrity: sha512-POYZ1+YxG0G3JizoPmForqo3kPILYhmHIqypsSz7RT+OKsKVmGt/GuspydJM1xhbPYrFyMxzt6HMMss4JN1Uew==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry-internal/tracing': 7.89.0
     dev: false
 
   /@sentry/types@7.76.0:

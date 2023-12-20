@@ -1,15 +1,38 @@
-import sentryPlugin from '@cloudflare/pages-plugin-sentry'
-import type { Function } from './utils'
+import { Toucan } from 'toucan-js'
 
-export const sentryMiddleware: Function = (context) => {
-  return sentryPlugin({
+import type { Function } from './utils'
+import '@sentry/tracing'
+
+// We add Sentry to context here, so we can use it to capture errors, handle tracing etc. elsewhere in the app.
+export const sentryMiddleware: Function = async (context) => {
+  const sentry = new Toucan({
+    context,
     dsn: context.env.SENTRY_DSN,
-    debug: context.env.ENVIRONMENT === 'development',
-    enabled: context.env.ENVIRONMENT !== 'development',
+    tracesSampleRate: 1.0,
+    enabled: true,
+    debug: true,
     enableTracing: true,
-    tracesSampleRate: 1,
     environment: context.env.ENVIRONMENT,
-  })(context)
+
+  })
+
+  context.data.sentry = sentry
+
+  const transaction = sentry.startTransaction({ name: 'Middleware Tracing' })
+
+  try {
+    return await context.next()
+  }
+  catch (error) {
+    // This should capture any (unhandled) exceptions thrown in any of the functions.
+    // If a function handles the error it self, it should use Sentry to capture the error, and return a usual Response object.
+    context.data.sentry.captureException(error)
+    sentry.captureException(error)
+    throw error
+  }
+  finally {
+    transaction.finish()
+  }
 }
 
 /** If you have other functions that are NOT under the /api folder, add them here so they aren't handled by Vike. */
@@ -65,9 +88,6 @@ export const renderMiddleware: Function = async (context) => {
   }
   catch (err) {
     const error = err as Error
-    // This should capture any (unhandled) exceptions thrown in any of the functions.
-    // If a function handles the error it self, it should use Sentry to capture the error, and return a usual Response object.
-    context.data.sentry.captureException(error)
     return new Response(`${error.message}\n${error.stack}`, { status: 500 })
   }
 }

@@ -18,6 +18,4 @@ const yoga = createYoga({
 })
 
 /** You probably don't want to be running a full-featured GraphQL server here, but it's cool that you can if you want to 🤷 */
-export const onRequest: Function = async (ctx) => {
-  return await yoga.fetch(ctx.request, ctx.env)
-}
+export const onRequest: Function = async ctx => await yoga.fetch(ctx.request, ctx.env)

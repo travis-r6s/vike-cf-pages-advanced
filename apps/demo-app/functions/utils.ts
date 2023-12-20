@@ -16,6 +16,8 @@ interface Data extends Record<string, unknown> {
 export type Function = PagesFunction<Env, any, Data>
 
 export function createResponse(context: EventContext<Env, any, Data>) {
+  context.data.sentry.setExtra('Function Path', context.functionPath)
+
   const respond = (status: number, body?: unknown, headers: Record<string, string> = {}): Response => {
     if (!body) { return new Response(null, { status, headers }) }
 
