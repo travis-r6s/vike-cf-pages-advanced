@@ -26,6 +26,9 @@ importers:
 
   apps/demo-app:
     dependencies:
+      '@fontsource-variable/urbanist':
+        specifier: ^5.0.19
+        version: 5.0.19
       '@sentry/react':
         specifier: ^7.89.0
         version: 7.89.0(react@18.2.0)
@@ -933,6 +936,10 @@ packages:
     resolution: {integrity: sha512-qQfo2mxH5yVom1kacMtZZJFVdW+E70mqHMJvVg6WTLo+VBuQJ4TojZlfWBjK0ve5BdEeNAVxOsl/nvNMpJOaJA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource-variable/urbanist@5.0.19:
+    resolution: {integrity: sha512-YGf4nJmhVQlJdyg4ukJt2COTDx49gpGSeG3zLQiGJIMxGtDGXN+VfiZueDUWLgUq8g6Il+cqYCBDrlChOvxY/g==}
+    dev: false
 
   /@graphql-tools/executor@1.2.0(graphql@16.8.1):
     resolution: {integrity: sha512-SKlIcMA71Dha5JnEWlw4XxcaJ+YupuXg0QCZgl2TOLFz4SkGCwU/geAsJvUJFwK2RbVLpQv/UMq67lOaBuwDtg==}

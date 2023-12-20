@@ -1,2 +1,32 @@
 /* This CSS is common to all pages */
 
+// Global Design System Imports
+@import "@thumbtack/thumbprint-scss/hr.css";
+@import "@thumbtack/thumbprint-scss/type.css";
+@import "@thumbtack/thumbprint-scss/link.css";
+
+body {
+  --font-family: 'Urbanist Variable', sans-serif;
+
+  // Yes, this is bad, but we need to override the Thumbtack CSS just quickly
+  font-family: var(--font-family) !important;
+}
+
+.layout {
+  max-width: 1200px;
+  margin: 2rem auto;
+
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+
+  --sidebar-width: 180px;
+
+  .sidebar {
+    flex: 0 0 var(--sidebar-width);
+  }
+
+  .content {
+    flex: 1 0 auto;
+  }
+}

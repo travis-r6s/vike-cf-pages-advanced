@@ -4,9 +4,9 @@ import { Counter } from './Counter'
 
 export function Page() {
   return (
-    <>
-      <h1>Welcome</h1>
-      This page is:
+    <div className='page'>
+      <PageHeader title='Welcome' />
+      <p className='tp-body-1'>This page is:</p>
       <ul>
         <li>Rendered to HTML.</li>
         <li>
@@ -15,6 +15,6 @@ export function Page() {
           <Counter />
         </li>
       </ul>
-    </>
+    </div>
   )
 }
