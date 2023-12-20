@@ -16,20 +16,21 @@ export const sentryMiddleware: Function = async (context) => {
 
   context.data.sentry = sentry
 
-  const transaction = sentry.startTransaction({ name: 'Middleware Tracing' })
+  // TODO: Fix this tracing issue - probably best to handle manually?
+  // const transaction = sentry.startTransaction({ name: 'Middleware Tracing' })
 
   try {
+    // TODO: We may want to capture errors in our renderer instead, as it is the final middleware?
     return await context.next()
   }
   catch (error) {
     // This should capture any (unhandled) exceptions thrown in any of the functions.
     // If a function handles the error it self, it should use Sentry to capture the error, and return a usual Response object.
-    context.data.sentry.captureException(error)
     sentry.captureException(error)
     throw error
   }
   finally {
-    transaction.finish()
+    // transaction.finish()
   }
 }
 
