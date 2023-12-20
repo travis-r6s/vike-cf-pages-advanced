@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fontsource-variable/urbanist": "^5.0.19",
+    "@react-pdf/renderer": "^3.1.14",
     "@sentry/react": "^7.89.0",
     "@sentry/tracing": "^7.89.0",
     "@thumbtack/thumbprint-global-css": "^0.1.21",
