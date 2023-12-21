@@ -1,5 +1,9 @@
 import type { FC } from 'react'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
+import { ofetch } from 'ofetch'
+
+import '@thumbtack/thumbprint-scss/button.css'
+import '@thumbtack/thumbprint-scss/list.css'
 
 /**
  * You'll likely want to create the client and add the provider in a parent wrapper component,
@@ -15,84 +19,78 @@ interface Post {
 }
 
 const DataComponent: FC = () => {
-  const { data, error, isLoading, isError, refetch, status } = useQuery({
+  const { data, error, status, isError } = useQuery({
+    refetchOnWindowFocus: true,
+    refetchInterval: 10000,
     queryKey: ['posts'],
-    queryFn: async (): Promise<Post[]> => {
-      const response = await fetch(`/api/posts`)
-      if (!response.ok) {
-        throw new Error('Network response was not ok :(')
-      }
-      return response.json()
-    },
+    queryFn: async () => await ofetch<Post[]>(`/api/posts`),
   })
-
-  const handleRefresh = useCallback(() => refetch(), [])
 
   return (
     <div>
-      <h2>Some posts for you to read:</h2>
-      <p>
+      <h2 className="tp-title-3">Example</h2>
+      <p className="tp-body-1">
         Status:
         {' '}
         {status}
       </p>
-      <small>Status not changing? The API is just too dang fast. Check your network console...</small>
-      <br />
-      {isLoading && (
-        <p>Loading...</p>
-      )}
       {isError && error instanceof Error && (
-        <p>{error.message}</p>
+        <p className="tp-body-1">{error.message}</p>
       )}
+      <br />
       {!!data && (
-        <>
-          <br />
-          <button onClick={handleRefresh}>
-            Looking for something else?
-          </button>
-          <br />
-
-          <ul>
-            {data.map((post, i) => (
-              <li key={i}>
-                {post.title}
-              </li>
-            ))}
-          </ul>
-        </>
+        <ul className="tp-list tp-list--decimal">
+          {data.map((post, i) => (
+            <li key={i} className="tp-body-1">
+              {post.title}
+            </li>
+          ))}
+        </ul>
       )}
       <br />
       {!!data?.length && (
-        <p>
-          <small>
-            Note: These are not actually
-            {' '}
-            <em>real</em>
-            {' '}
-            posts - sorry.
-          </small>
+        <p className="tp-body-3">
+          Note: These are not actually
+          {' '}
+          <em>real</em>
+          {' '}
+          posts - sorry.
         </p>
       )}
     </div>
   )
 }
 
-// TODO: Probably just list posts here, filter by page size, and allow fetching more.
-
 export function Page() {
   return (
     <QueryClientProvider client={queryClient}>
-      <h1>Data: HTTP</h1>
-      <p>An example of fetching data clientside from an HTTP API, which is in turn hosted on the same worker rendering this page.</p>
-      <p>
-        This example uses
-        {' '}
-        <a href="https://tanstack.com/query/v3/docs/react/overview">react-query</a>
-        {' '}
-        to handle data fetching.
-      </p>
-      <br />
-      <DataComponent />
+      <div className="page">
+        <PageHeader title="REST" />
+        <p>
+          An example of using
+          {' '}
+          <code>fetch</code>
+          {' '}
+          fetching data clientside from an HTTP API, which is in turn hosted on the same worker rendering this page.
+        </p>
+        <p>
+          This example uses
+          {' '}
+          <a href="https://tanstack.com/query/v3/docs/react/overview">react-query</a>
+          {' '}
+          to handle data fetching.
+        </p>
+        <br />
+        <p className="tp-body-3">
+          Lets be honest, pretty much everything is built on top of
+          {' '}
+          <code>fetch</code>
+          {' '}
+          now anyway, so why not keep to the basics?
+        </p>
+        <br />
+        <DataComponent />
+      </div>
     </QueryClientProvider>
   )
 }

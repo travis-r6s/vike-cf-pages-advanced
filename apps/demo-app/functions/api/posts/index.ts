@@ -1,4 +1,4 @@
-// import { faker } from '@faker-js/faker'
+import { ofetch } from 'ofetch'
 import type { Function } from '../../utils'
 import { createResponse } from '../../utils'
 
@@ -9,15 +9,9 @@ export const onRequest: Function = async (ctx) => {
   const span = transaction.startChild({ op: ctx.functionPath, description: 'Fetching Posts' })
 
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const { posts } = await ofetch('https://dummyjson.com/posts?limit=20')
 
-    if (!response.ok) {
-      throw new Error(await response.text())
-    }
-
-    const json = await response.json()
-
-    return respond(200, json)
+    return respond(200, posts)
   }
   catch (err) {
     const error = err as Error
