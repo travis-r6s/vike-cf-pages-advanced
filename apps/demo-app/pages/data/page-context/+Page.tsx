@@ -3,32 +3,35 @@ import { logger } from 'utils'
 import './page.scss'
 import '@thumbtack/thumbprint-scss/label.css'
 import '@thumbtack/thumbprint-scss/select.css'
+import type { FC } from 'react'
+import type { Country } from './+data'
 
-interface PageProps {
-  data: {
-    flags: {
-      png: string
-    }
-    name: {
-      common: string
-    }
-  }[]
+/** Type of the data from the `onBeforeRender` hook */
+interface PageContext {
+  data: string
 }
 
-export function Page() {
+/** Type of the data from the `data` hook */
+interface Props {
+  data: {
+    countries: Country[]
+  }
+}
+
+export const Page: FC<Props> = ({ data }) => {
   // We pass in the PageProps type here, which updates our context to add the correct types.
-  const context = usePageContext<PageProps>()
+  const context = usePageContext<PageContext>()
 
   if (context.pageProps) {
-    logger.success('We have data from the server:', context.pageProps.data)
+    logger.success('We have pageContext data from the server:', context.pageProps.data)
   }
 
   const countries = useMemo(() => {
-    if (!context.pageProps?.data) {
+    if (!data.countries) {
       return []
     }
 
-    return context.pageProps.data.sort((a, b) => a.name.common.localeCompare(b.name.common))
+    return data.countries.sort((a, b) => a.name.common.localeCompare(b.name.common))
   }, [])
 
   return (
@@ -36,8 +39,9 @@ export function Page() {
       <PageHeader title="Page Context" />
       <p className="tp-body-1">
         Example of fetching data server-side, and adding it to the page context (i.e. inline JSON in the HTML page) using the
-        <a href="https://vike.dev/onBeforeRender" target="_blank">
-          <code>onBeforeRender</code>
+        {' '}
+        <a href="https://vike.dev/data-fetching" target="_blank">
+          <code>data</code>
           {' '}
           hook
         </a>

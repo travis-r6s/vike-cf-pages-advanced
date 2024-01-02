@@ -117,7 +117,7 @@ export function Page() {
         <p className="tp-body-1">
           You would most likely only use this if you needed an API to handle mutations - if you are only fetching data to be used in the page, then you may be better served by using the
           {' '}
-          <code>onBeforeRender</code>
+          <code>data</code>
           {' '}
           hook, and adding data to page context. See
           {' '}

@@ -54,7 +54,7 @@ let root: Root
 export const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
   logger.info(`Running onRenderClient`)
 
-  const { Page, pageProps } = pageContext
+  const { Page, data, pageProps } = pageContext
 
   try {
     if (!Page) {
@@ -74,7 +74,7 @@ export const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnTy
     root.render(
       <Sentry.ErrorBoundary fallback={ErrorFallbackComponent} showDialog>
         <PageShell pageContext={pageContext}>
-          <Page {...pageProps} />
+          <Page {...pageProps} data={data} />
         </PageShell>
       </Sentry.ErrorBoundary>,
     )
