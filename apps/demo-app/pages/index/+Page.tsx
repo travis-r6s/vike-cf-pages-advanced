@@ -1,20 +1,17 @@
-import { Counter } from './Counter'
+import ReadMe from '#/README.md'
 
-// TODO: This should be an overview page, with links to each data type, and a brief explanation of each.
-
+/**
+ * This is the homepage, and we import and render the README markdown file component,
+ * using it as a content source instead of needing to write the same content in two places.
+ *
+ * You can use this same method for other pages if needed, just import the markdown files as needed.
+ *
+ * Powered by: https://github.com/cyco130/vite-plugin-mdx
+ */
 export function Page() {
   return (
     <div className="page">
-      <PageHeader title="Welcome" />
-      <p className="tp-body-1">This page is:</p>
-      <ul>
-        <li>Rendered to HTML.</li>
-        <li>
-          Interactive.
-          {' '}
-          <Counter />
-        </li>
-      </ul>
+      <ReadMe />
     </div>
   )
 }
