@@ -32,7 +32,7 @@ const DataComponent: FC = () => {
       <p className="tp-body-1">
         Status:
         {' '}
-        {status}
+        <code>{status}</code>
       </p>
       {isError && error instanceof Error && (
         <p className="tp-body-1">{error.message}</p>
@@ -42,7 +42,7 @@ const DataComponent: FC = () => {
         <ul className="tp-list tp-list--decimal">
           {data.map((post, i) => (
             <li key={i} className="tp-body-1">
-              {post.title}
+              {post.title} <a href={`/api/posts/${post.id}`}>Read More</a>
             </li>
           ))}
         </ul>
