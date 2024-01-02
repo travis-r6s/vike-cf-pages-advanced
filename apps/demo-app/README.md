@@ -22,21 +22,29 @@ TODO: Give more of an overview, on:
 
 *If you are viewing this on the example project website, then you will see a list of contents on the left hand side.*
 
-1. [**Data Fetching**](#data-fetching)
+1. [**Styling**](#styling)
+2. [**Data Fetching**](#data-fetching)
     - [Page Context](#page-context)
     - [REST](#rest)
     - [TRPC](#trpc)
     - [GraphQL](#graphql)
-2. [**API Routes**](#api-routes)
+3. [**API Routes**](#api-routes)
     - [REST](#rest-api)
     - [GraphQL](#graphql-api)
-3. [**Other Examples**](#other-examples)
+4. [**Other Examples**](#other-examples)
     - [Dev-only Page](#development-only-page)
     - [Lazy Page](#lazy-page)
     - [Sentry Error Page](#sentry-error-page)
 
 
 ## Demos
+
+### Styling
+
+- [View Overview](https://vike-cf-pages.pages.dev/styling)
+- [View Code](https://github.com/travis-r6s/vike-cf-pages/tree/main/apps/demo-app/pages/styling)
+
+This page explains how styling is setup and used in this particular project.
 
 ### Data Fetching
 
