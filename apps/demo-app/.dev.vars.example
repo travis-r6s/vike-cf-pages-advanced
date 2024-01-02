@@ -1,7 +1,7 @@
 # Workers ENV
 ENVIRONMENT=development
-SENTRY_DSN=https://0e3559573eb5d71db168f0e517df49b7@o4506423630299136.ingest.sentry.io/4506423634231296
+SENTRY_DSN=
 
 # App ENV
 # You can add the VITE prefix to make your env's available clientside - otherwise they will only be availble server side.
-VITE_SENTRY_DSN=https://0e3559573eb5d71db168f0e517df49b7@o4506423630299136.ingest.sentry.io/4506423634231296
+VITE_SENTRY_DSN=
