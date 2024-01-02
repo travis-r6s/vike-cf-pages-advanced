@@ -6,8 +6,9 @@
   },
   "scripts": {
     "dev": "pnpm run --recursive --parallel dev",
-    "build": "pnpm run --recursive build",
-    "lint": "eslint . --fix"
+    "build": "pnpm run link-functions && pnpm run --recursive build",
+    "lint": "eslint . --fix",
+    "link-functions": "ln -s apps/demo-app/functions functions"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.1",
