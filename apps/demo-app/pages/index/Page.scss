@@ -1,5 +1,16 @@
 .page {
-  .page-content {
-    
+  // Why, no, this probably isn't the best way to handle spacing the markdown page content. But it saves adding margins to all selectors.
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h2,
+  h3 {
+    margin-top: 1.2rem;
+  }
+
+  blockquote {
+    width: fit-content;
+    margin: 1rem 0;
   }
 }
