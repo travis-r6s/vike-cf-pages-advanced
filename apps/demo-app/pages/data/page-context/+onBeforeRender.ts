@@ -15,7 +15,7 @@ export const onBeforeRender: OnBeforeRenderAsync = async () => {
   return {
     pageContext: {
       pageProps: {
-        some: 'custom data'
+        some: 'custom data',
       },
     },
   }

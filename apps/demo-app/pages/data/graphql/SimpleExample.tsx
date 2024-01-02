@@ -22,7 +22,7 @@ export const SimpleExample: FC = () => {
   }, [name])
 
   return (
-    <div className='name-example'>
+    <div className="name-example">
       <h2 className="tp-title-3">Simple Example:</h2>
       {fetching && (
         <p className="tp-title-5">Loading...</p>

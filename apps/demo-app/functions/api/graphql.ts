@@ -88,12 +88,12 @@ builder.mutationType({
         try {
           const todo = await ofetch<Todo>(`https://jsonplaceholder.typicode.com/todos`, {
             method: 'POST',
-            body: { title, userId, },
+            body: { title, userId },
           })
 
           return {
             ...todo,
-            completed: false
+            completed: false,
           }
         }
         catch (err) {
@@ -107,22 +107,22 @@ builder.mutationType({
       type: TodoType,
       nullable: true,
       args: {
-        id: t.arg.id({ required: true })
+        id: t.arg.id({ required: true }),
       },
-      resolve: async (_, {id}, { Sentry }) => {
+      resolve: async (_, { id }, { Sentry }) => {
         try {
           const todo = await ofetch<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`)
 
-          if (!todo) return null
+          if (!todo) { return null }
 
-          const { completed} = await ofetch<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+          const { completed } = await ofetch<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`, {
             method: 'PATCH',
             body: { completed: true },
           })
 
           return {
             ...todo,
-            completed
+            completed,
           }
         }
         catch (err) {
@@ -130,8 +130,8 @@ builder.mutationType({
           Sentry.captureException(error)
           throw createGraphQLError(error.message)
         }
-      }
-    })
+      },
+    }),
   }),
 })
 

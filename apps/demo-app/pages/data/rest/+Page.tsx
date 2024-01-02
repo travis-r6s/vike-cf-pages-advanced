@@ -42,7 +42,9 @@ const DataComponent: FC = () => {
         <ul className="tp-list tp-list--decimal">
           {data.map((post, i) => (
             <li key={i} className="tp-body-1">
-              {post.title} <a href={`/api/posts/${post.id}`}>Read More</a>
+              {post.title}
+              {' '}
+              <a href={`/api/posts/${post.id}`}>Read More</a>
             </li>
           ))}
         </ul>

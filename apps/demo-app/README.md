@@ -36,7 +36,6 @@ TODO: Give more of an overview, on:
     - [Lazy Page](#lazy-page)
     - [Sentry Error Page](#sentry-error-page)
 
-
 ## Demos
 
 ### Styling

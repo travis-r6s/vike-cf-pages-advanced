@@ -8,7 +8,9 @@ function App() {
       <h1>React Component Library</h1>
       <div className="card">
         <p>
-          <code>Counter.tsx</code> is imported below:
+          <code>Counter.tsx</code>
+          {' '}
+          is imported below:
         </p>
         <Counter />
         <p>

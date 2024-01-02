@@ -40,7 +40,7 @@ const config: UserConfig = {
           }
         }],
         [RehypeExternalLinks, {
-          target: '_blank'
+          target: '_blank',
         }],
         // We are using a plugin to add class names to our markdown, as we are using an external design system for styling.
         // @ts-expect-error Not sure why this complains, but it works
