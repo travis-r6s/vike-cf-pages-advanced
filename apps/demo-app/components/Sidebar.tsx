@@ -78,7 +78,7 @@ const menuItems: MenuItem[] = [
   {
     type: 'link',
     text: 'REST',
-    route: '/api/todos',
+    route: '/api/posts',
   },
   {
     type: 'link',
