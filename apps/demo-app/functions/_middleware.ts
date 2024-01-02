@@ -1,5 +1,5 @@
 import { Toucan } from 'toucan-js'
-
+import { logger } from 'utils'
 import type { Function } from './utils'
 import '@sentry/tracing'
 
@@ -55,6 +55,7 @@ const excludedPaths = [
 export const renderMiddleware: Function = async (context) => {
   const url = new URL(context.request.url)
 
+  logger.info(`[Middleware] Handling ${url.pathname}`)
   context.data.sentry.addBreadcrumb({
     message: `[Middleware] Handling ${url.pathname}`,
     level: 'info',
@@ -70,6 +71,7 @@ export const renderMiddleware: Function = async (context) => {
       return context.next()
     }
 
+    logger.info(`[Middleware](Renderer) Handling ${url.pathname}`)
     context.data.sentry.addBreadcrumb({
       message: `[Middleware](Renderer) Handling ${url.pathname}`,
       category: 'Renderer',

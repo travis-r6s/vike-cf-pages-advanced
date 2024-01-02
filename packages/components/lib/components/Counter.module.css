@@ -1,0 +1,9 @@
+.button {
+  padding: 1rem 2rem;
+  background-color: lightgray;
+  border: none;
+  border-radius: 6px;
+  color: black;
+  text-transform: capitalize;
+  font-weight: 600;
+}

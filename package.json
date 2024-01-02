@@ -5,7 +5,8 @@
     "node": "20.10.0"
   },
   "scripts": {
-    "dev": "pnpm run -r dev",
+    "dev": "pnpm run --recursive --parallel dev",
+    "build": "pnpm run --recursive build",
     "lint": "eslint . --fix"
   },
   "devDependencies": {

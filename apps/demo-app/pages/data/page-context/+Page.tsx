@@ -1,6 +1,8 @@
+import { logger } from 'utils'
+
 import './page.scss'
-import '@thumbtack/thumbprint-scss/select.css'
 import '@thumbtack/thumbprint-scss/label.css'
+import '@thumbtack/thumbprint-scss/select.css'
 
 interface PageProps {
   data: {
@@ -18,11 +20,13 @@ export function Page() {
   const context = usePageContext<PageProps>()
 
   if (context.pageProps) {
-    console.log('We have data from the server:', context.pageProps.data)
+    logger.success('We have data from the server:', context.pageProps.data)
   }
 
   const countries = useMemo(() => {
-    if (!context.pageProps?.data) { return [] }
+    if (!context.pageProps?.data) {
+      return []
+    }
 
     return context.pageProps.data.sort((a, b) => a.name.common.localeCompare(b.name.common))
   }, [])

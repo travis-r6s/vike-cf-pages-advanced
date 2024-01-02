@@ -4,6 +4,7 @@ import * as Sentry from '@sentry/react'
 import type { OnRenderClientAsync } from 'vike/types'
 import type { Root } from 'react-dom/client'
 import { createRoot } from 'react-dom/client'
+import { logger } from 'utils'
 
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,
@@ -51,6 +52,8 @@ function ErrorFallbackComponent() {
 let root: Root
 
 export const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
+  logger.info(`Running onRenderClient`)
+
   const { Page, pageProps } = pageContext
 
   try {

@@ -38,6 +38,11 @@ const menuItems: MenuItem[] = [
   },
   {
     type: 'link',
+    text: 'Monorepo',
+    route: '/workspace',
+  },
+  {
+    type: 'link',
     text: 'Styling',
     route: '/styling',
   },
