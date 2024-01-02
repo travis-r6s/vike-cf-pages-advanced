@@ -9,6 +9,8 @@ import dotenv from 'dotenv'
 import type { UserConfig } from 'vite'
 import { mdx as MDX } from '@cyco130/vite-plugin-mdx'
 
+import RehypeExternalLinks from 'rehype-external-links'
+
 // We are using the Workers .dev.vars env file, to keep things simple and have a single env file.
 dotenv.config({ path: './.dev.vars' })
 
@@ -36,6 +38,9 @@ const config: UserConfig = {
           if (url.hostname === DEMO_SITE_HOST) {
             return url.pathname
           }
+        }],
+        [RehypeExternalLinks, {
+          target: '_blank'
         }],
         // We are using a plugin to add class names to our markdown, as we are using an external design system for styling.
         // @ts-expect-error Not sure why this complains, but it works

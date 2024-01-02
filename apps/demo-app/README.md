@@ -10,15 +10,6 @@ This project shows an example of how to use [Vike](https://vike.dev) with [Cloud
 
 This is a demo project to showcase using Vike - a Vite SSR plugin - and the Cloudflare Pages hosting platform. These two together provide a fully SSR and/or SPA capable website, hosted on the edge, along with an edge-hosted API to handle data for your site.
 
-<!-- TODO: Give more of an overview, on:
-
-- tech used
-- what the platforms are, how they are used
-- what you can do with them, how you would use them
-- the different tech used for these demos, or what the demos are
-- layout of code
- -->
-
 ## Demo Contents
 
 *If you are viewing this on the example project website, then you will see a list of contents on the left hand side.*
